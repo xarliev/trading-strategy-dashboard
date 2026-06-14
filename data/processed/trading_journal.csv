@@ -1,0 +1,1 @@
+trade_id,created_at,symbol,broker,setup,status,entry_order_type,entry_stop,entry_limit,max_allowed_open_price,entry_price,stop_loss,qty,risk_amount,target_2r,exit_price,exit_date,gross_pnl,commission_buy_eur,commission_sell_eur,fees,net_pnl,r_multiple,notes

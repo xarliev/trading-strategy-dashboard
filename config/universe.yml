@@ -1,0 +1,53 @@
+# Universo inicial. Puedes añadir/quitar tickers.
+# Yahoo Finance usa sufijos: España .MC, Alemania .DE, Francia .PA, etc.
+market_index: SPY
+account:
+  base_currency: EUR
+  equity: 10000
+  risk_per_trade_pct: 0.005
+  max_open_positions: 3
+  max_total_open_risk_pct: 0.015
+
+broker:
+  name: Trade Republic
+  # Trade Republic: coste externo fijo habitual por orden ejecutada en acciones/ETFs.
+  # Compra = 1 EUR, venta = 1 EUR. Ida y vuelta estimada = 2 EUR.
+  commission_buy_eur: 1.00
+  commission_sell_eur: 1.00
+  supports_stop_limit: false
+  entry_order_type: buy_stop
+  exit_stop_order_type: sell_stop
+  target_order_type: sell_limit
+  # Protección sustitutiva de la stop-limit: no ejecutar manualmente si abre demasiado por encima.
+  max_open_gap_above_entry_pct: 0.01
+  max_open_gap_above_entry_atr_mult: 1.0
+  slippage_pct: 0.0005
+strategy:
+  lookback_days: 370
+  min_price: 5
+  min_avg_volume_20: 200000
+  max_distance_above_sma50_pct: 0.08
+  atr_period: 14
+  entry_buffer_pct: 0.001
+  stop_atr_buffer_mult: 0.1
+  min_reward_risk: 2.0
+  partial_exit_r: 2.0
+  partial_exit_fraction: 0.5
+symbols:
+  - SPY
+  - QQQ
+  - IWM
+  - AAPL
+  - MSFT
+  - NVDA
+  - AMZN
+  - META
+  - GOOGL
+  - TSLA
+  - SAN.MC
+  - BBVA.MC
+  - ITX.MC
+  - IBE.MC
+  - REP.MC
+  - CABK.MC
+  - FER.MC
