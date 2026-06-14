@@ -1,1 +1,396 @@
-<!doctype html><html><head><meta charset="utf-8"><title>Trading Dashboard</title></head><body><h1>Trading Dashboard</h1><p>Ejecuta el workflow para generar el dashboard completo.</p></body></html>
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Trading Strategy Dashboard</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 24px; background:#fafafa; color:#222; }
+    .grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap:12px; }
+    .card { background:white; border:1px solid #ddd; border-radius:12px; padding:16px; box-shadow:0 1px 3px rgba(0,0,0,.06); }
+    table { border-collapse: collapse; width:100%; background:white; }
+    th, td { border:1px solid #ddd; padding:8px; text-align:left; font-size:14px; }
+    th { background:#f0f0f0; }
+    .small { color:#666; font-size:13px; }
+    .pill { display:inline-block; padding:2px 8px; border-radius:999px; background:#eee; }
+  </style>
+</head>
+<body>
+  <h1>Dashboard de estrategia de trading</h1>
+  <p class="small">Actualizado: 2026-06-14 10:33:47 UTC. Uso educativo/investigación; no es recomendación financiera.</p>
+  <div class="grid">
+    <div class="card"><b>Tickers evaluados</b><br><span style="font-size:28px">17</span></div>
+    <div class="card"><b>Señales hoy</b><br><span style="font-size:28px">0</span></div>
+    <div class="card"><b>Casi válidas</b><br><span style="font-size:28px">8</span></div>
+    <div class="card"><b>Operaciones en diario</b><br><span style="font-size:28px">0</span></div>
+    <div class="card"><b>Pendientes</b><br><span style="font-size:28px">0</span></div>
+    <div class="card"><b>Net PnL registrado</b><br><span style="font-size:28px">0.0</span></div>
+  </div>
+
+  <h2>Diagnóstico del escaneo</h2>
+  <p class="small">
+    Este informe muestra todos los tickers evaluados y qué condiciones han fallado. Útil para ver cuáles están cerca de generar señal.
+    <br><a href="../data/processed/scan_diagnostics_latest.csv">Descargar scan_diagnostics_latest.csv</a> ·
+    <a href="../data/processed/scan_diagnostics_history.csv">Descargar histórico de diagnósticos</a>
+  </p>
+  <table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>symbol</th>
+      <th>classification</th>
+      <th>score_pct</th>
+      <th>failed_checks</th>
+      <th>reason</th>
+      <th>close</th>
+      <th>ema20</th>
+      <th>sma50</th>
+      <th>sma200</th>
+      <th>atr14</th>
+      <th>avg_vol20</th>
+      <th>dist_sma50_pct</th>
+      <th>entry_stop</th>
+      <th>stop_loss</th>
+      <th>target_2r</th>
+      <th>qty</th>
+      <th>max_allowed_open_price</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>AAPL</td>
+      <td>almost_valid</td>
+      <td>91.67</td>
+      <td>bullish_turn_ok</td>
+      <td>Tiene tendencia y parte del setup, pero le falta alguna condición final.</td>
+      <td>291.130</td>
+      <td>299.1441</td>
+      <td>285.3621</td>
+      <td>266.4564</td>
+      <td>7.5914</td>
+      <td>50484990.00</td>
+      <td>0.0202</td>
+      <td>297.4372</td>
+      <td>288.8609</td>
+      <td>314.5898</td>
+      <td>5.0</td>
+      <td>300.4115</td>
+    </tr>
+    <tr>
+      <td>AMZN</td>
+      <td>almost_valid</td>
+      <td>91.67</td>
+      <td>pullback_ok</td>
+      <td>Tiene tendencia y parte del setup, pero le falta alguna condición final.</td>
+      <td>238.550</td>
+      <td>252.9245</td>
+      <td>254.7736</td>
+      <td>232.5094</td>
+      <td>7.7643</td>
+      <td>41739825.00</td>
+      <td>-0.0637</td>
+      <td>243.6034</td>
+      <td>232.8136</td>
+      <td>265.1829</td>
+      <td>4.0</td>
+      <td>246.0394</td>
+    </tr>
+    <tr>
+      <td>BBVA.MC</td>
+      <td>almost_valid</td>
+      <td>91.67</td>
+      <td>pullback_ok</td>
+      <td>Tiene tendencia y parte del setup, pero le falta alguna condición final.</td>
+      <td>20.090</td>
+      <td>19.4862</td>
+      <td>19.2139</td>
+      <td>18.1170</td>
+      <td>0.4371</td>
+      <td>8658499.20</td>
+      <td>0.0456</td>
+      <td>20.2602</td>
+      <td>19.7313</td>
+      <td>21.3181</td>
+      <td>94.0</td>
+      <td>20.4628</td>
+    </tr>
+    <tr>
+      <td>FER.MC</td>
+      <td>almost_valid</td>
+      <td>91.67</td>
+      <td>pullback_ok</td>
+      <td>Tiene tendencia y parte del setup, pero le falta alguna condición final.</td>
+      <td>58.300</td>
+      <td>57.6230</td>
+      <td>58.2664</td>
+      <td>55.3625</td>
+      <td>1.1957</td>
+      <td>869247.05</td>
+      <td>0.0006</td>
+      <td>58.7987</td>
+      <td>57.6804</td>
+      <td>61.0354</td>
+      <td>44.0</td>
+      <td>59.3867</td>
+    </tr>
+    <tr>
+      <td>IBE.MC</td>
+      <td>almost_valid</td>
+      <td>91.67</td>
+      <td>bullish_turn_ok</td>
+      <td>Tiene tendencia y parte del setup, pero le falta alguna condición final.</td>
+      <td>20.320</td>
+      <td>19.8153</td>
+      <td>19.8180</td>
+      <td>18.3452</td>
+      <td>0.3332</td>
+      <td>10077741.50</td>
+      <td>0.0253</td>
+      <td>20.4604</td>
+      <td>20.1267</td>
+      <td>21.1280</td>
+      <td>149.0</td>
+      <td>20.6650</td>
+    </tr>
+    <tr>
+      <td>QQQ</td>
+      <td>almost_valid</td>
+      <td>91.67</td>
+      <td>pullback_ok</td>
+      <td>Tiene tendencia y parte del setup, pero le falta alguna condición final.</td>
+      <td>721.340</td>
+      <td>715.2480</td>
+      <td>681.8074</td>
+      <td>624.4642</td>
+      <td>15.9636</td>
+      <td>48341175.00</td>
+      <td>0.0580</td>
+      <td>724.7340</td>
+      <td>709.6837</td>
+      <td>754.8347</td>
+      <td>3.0</td>
+      <td>731.9814</td>
+    </tr>
+    <tr>
+      <td>REP.MC</td>
+      <td>almost_valid</td>
+      <td>91.67</td>
+      <td>bullish_turn_ok</td>
+      <td>Tiene tendencia y parte del setup, pero le falta alguna condición final.</td>
+      <td>22.720</td>
+      <td>22.7442</td>
+      <td>22.2442</td>
+      <td>17.9898</td>
+      <td>0.7150</td>
+      <td>2919172.00</td>
+      <td>0.0214</td>
+      <td>23.3333</td>
+      <td>22.2985</td>
+      <td>25.4029</td>
+      <td>48.0</td>
+      <td>23.5666</td>
+    </tr>
+    <tr>
+      <td>SAN.MC</td>
+      <td>almost_valid</td>
+      <td>91.67</td>
+      <td>pullback_ok</td>
+      <td>Tiene tendencia y parte del setup, pero le falta alguna condición final.</td>
+      <td>11.026</td>
+      <td>10.5869</td>
+      <td>10.4180</td>
+      <td>9.6115</td>
+      <td>0.2497</td>
+      <td>23380044.95</td>
+      <td>0.0584</td>
+      <td>11.0370</td>
+      <td>10.7030</td>
+      <td>11.7050</td>
+      <td>149.0</td>
+      <td>11.1474</td>
+    </tr>
+    <tr>
+      <td>GOOGL</td>
+      <td>trend_only</td>
+      <td>83.33</td>
+      <td>pullback_ok,bullish_turn_ok</td>
+      <td>Cumple tendencia, pero todavía no hay retroceso/vela señal válida.</td>
+      <td>359.680</td>
+      <td>369.9434</td>
+      <td>362.0613</td>
+      <td>307.5641</td>
+      <td>10.6562</td>
+      <td>32473505.00</td>
+      <td>-0.0066</td>
+      <td>366.9366</td>
+      <td>353.8744</td>
+      <td>393.0610</td>
+      <td>3.0</td>
+      <td>370.6059</td>
+    </tr>
+    <tr>
+      <td>ITX.MC</td>
+      <td>trend_only</td>
+      <td>83.33</td>
+      <td>pullback_ok,bullish_turn_ok</td>
+      <td>Cumple tendencia, pero todavía no hay retroceso/vela señal válida.</td>
+      <td>55.940</td>
+      <td>53.5017</td>
+      <td>51.9591</td>
+      <td>50.5786</td>
+      <td>1.5286</td>
+      <td>1812426.20</td>
+      <td>0.0766</td>
+      <td>57.0570</td>
+      <td>55.6471</td>
+      <td>59.8767</td>
+      <td>35.0</td>
+      <td>57.6276</td>
+    </tr>
+    <tr>
+      <td>IWM</td>
+      <td>trend_only</td>
+      <td>83.33</td>
+      <td>pullback_ok,bullish_turn_ok</td>
+      <td>Cumple tendencia, pero todavía no hay retroceso/vela señal válida.</td>
+      <td>292.950</td>
+      <td>285.8372</td>
+      <td>278.2536</td>
+      <td>256.1894</td>
+      <td>6.2264</td>
+      <td>29769180.00</td>
+      <td>0.0528</td>
+      <td>296.0157</td>
+      <td>289.6874</td>
+      <td>308.6725</td>
+      <td>7.0</td>
+      <td>298.9759</td>
+    </tr>
+    <tr>
+      <td>NVDA</td>
+      <td>trend_only</td>
+      <td>83.33</td>
+      <td>pullback_ok,bullish_turn_ok</td>
+      <td>Cumple tendencia, pero todavía no hay retroceso/vela señal válida.</td>
+      <td>205.190</td>
+      <td>211.0262</td>
+      <td>206.7045</td>
+      <td>189.0373</td>
+      <td>8.3289</td>
+      <td>176040070.00</td>
+      <td>-0.0073</td>
+      <td>207.2771</td>
+      <td>202.6071</td>
+      <td>216.6170</td>
+      <td>10.0</td>
+      <td>209.3498</td>
+    </tr>
+    <tr>
+      <td>CABK.MC</td>
+      <td>rejected</td>
+      <td>83.33</td>
+      <td>distance_sma50_ok,pullback_ok</td>
+      <td>No cumple los filtros mínimos de tendencia/liquidez/precio.</td>
+      <td>11.890</td>
+      <td>11.3907</td>
+      <td>10.9688</td>
+      <td>9.7983</td>
+      <td>0.2321</td>
+      <td>6477767.40</td>
+      <td>0.0840</td>
+      <td>11.9019</td>
+      <td>11.6668</td>
+      <td>12.3721</td>
+      <td>212.0</td>
+      <td>12.0209</td>
+    </tr>
+    <tr>
+      <td>MSFT</td>
+      <td>rejected</td>
+      <td>75.00</td>
+      <td>close_above_sma200,sma50_above_sma200,pullback_ok</td>
+      <td>No cumple los filtros mínimos de tendencia/liquidez/precio.</td>
+      <td>390.740</td>
+      <td>413.7838</td>
+      <td>411.1971</td>
+      <td>451.8730</td>
+      <td>13.1579</td>
+      <td>37883025.00</td>
+      <td>-0.0498</td>
+      <td>392.1317</td>
+      <td>380.9542</td>
+      <td>414.4868</td>
+      <td>4.0</td>
+      <td>396.0530</td>
+    </tr>
+    <tr>
+      <td>TSLA</td>
+      <td>rejected</td>
+      <td>75.00</td>
+      <td>close_above_sma200,sma50_above_sma200,pullback_ok</td>
+      <td>No cumple los filtros mínimos de tendencia/liquidez/precio.</td>
+      <td>406.430</td>
+      <td>410.0145</td>
+      <td>398.3000</td>
+      <td>415.6944</td>
+      <td>17.7693</td>
+      <td>47410425.00</td>
+      <td>0.0204</td>
+      <td>407.0867</td>
+      <td>384.9831</td>
+      <td>451.2939</td>
+      <td>2.0</td>
+      <td>411.1575</td>
+    </tr>
+    <tr>
+      <td>META</td>
+      <td>rejected</td>
+      <td>66.67</td>
+      <td>close_above_sma200,sma50_above_sma200,pullback_ok,bullish_turn_ok</td>
+      <td>No cumple los filtros mínimos de tendencia/liquidez/precio.</td>
+      <td>566.980</td>
+      <td>599.6528</td>
+      <td>621.8278</td>
+      <td>657.4289</td>
+      <td>20.4929</td>
+      <td>17736295.00</td>
+      <td>-0.0882</td>
+      <td>576.6461</td>
+      <td>558.8507</td>
+      <td>612.2368</td>
+      <td>2.0</td>
+      <td>582.4125</td>
+    </tr>
+    <tr>
+      <td>SPY</td>
+      <td>market_ok</td>
+      <td>0.00</td>
+      <td></td>
+      <td>Filtro de mercado general usado para permitir/bloquear nuevas entradas.</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+
+  <h2>Señales detectadas</h2>
+  <p><a href="../data/processed/signals_latest.csv">Descargar señales últimas</a></p>
+  <p>No hay datos todavía.</p>
+
+  <h2>Diario de operaciones</h2>
+  <p><a href="../data/processed/trading_journal.csv">Descargar trading_journal.csv</a></p>
+  <p>No hay datos todavía.</p>
+
+  <h2>Gráfico de PnL acumulado registrado</h2>
+  <p>No hay operaciones cerradas con PnL todavía.</p>
+</body>
+</html>
