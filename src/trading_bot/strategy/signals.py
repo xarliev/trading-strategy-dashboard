@@ -12,20 +12,28 @@ def _market_ok(df: pd.DataFrame, market_symbol: str) -> tuple[bool, dict]:
         'market_ema20': None,
         'market_sma200': None,
         'market_price_above_sma200': False,
-        'market_above_or_recovering_ema20': False,
+        'market_above_ema20': False,
+        'market_recovered_ema20_today': False,
     }
     if len(m) < 200:
         return False, context
     last = m.iloc[-1]
     prev = m.iloc[-2]
+    market_price_above_sma200 = bool(pd.notna(last['SMA200']) and last['Close'] > last['SMA200'])
+    market_above_ema20 = bool(pd.notna(last['EMA20']) and last['Close'] > last['EMA20'])
+    market_recovered_ema20_today = bool(
+        pd.notna(last['EMA20']) and pd.notna(prev['EMA20'])
+        and prev['Close'] <= prev['EMA20'] and last['Close'] > last['EMA20']
+    )
     context.update({
         'market_close': round(float(last['Close']), 4),
         'market_ema20': round(float(last['EMA20']), 4) if pd.notna(last['EMA20']) else None,
         'market_sma200': round(float(last['SMA200']), 4) if pd.notna(last['SMA200']) else None,
-        'market_price_above_sma200': bool(last['Close'] > last['SMA200']),
-        'market_above_or_recovering_ema20': bool(last['Close'] > last['EMA20'] or prev['Close'] < prev['EMA20']),
+        'market_price_above_sma200': market_price_above_sma200,
+        'market_above_ema20': market_above_ema20,
+        'market_recovered_ema20_today': market_recovered_ema20_today,
     })
-    ok = bool(context['market_price_above_sma200'] and context['market_above_or_recovering_ema20'])
+    ok = bool(market_price_above_sma200 and market_above_ema20)
     return ok, context
 
 
