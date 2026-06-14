@@ -1,0 +1,62 @@
+name: Daily trading scan and dashboard
+
+on:
+  workflow_dispatch:
+  schedule:
+    # Hora UTC. En España equivale a 22:45 CET / 23:45 CEST aprox.
+    # Ajusta si quieres otro momento tras el cierre de mercado USA.
+    - cron: "45 21 * * 1-5"
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run daily pipeline
+        run: python main.py
+
+      - name: Commit updated data and dashboard
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/processed data/raw dashboard
+          git commit -m "Update daily trading scan" || echo "No changes to commit"
+          git push
+
+      - name: Upload dashboard artifact for GitHub Pages
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dashboard
+
+  deploy:
+    needs: scan
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
