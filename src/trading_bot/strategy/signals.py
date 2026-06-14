@@ -1,5 +1,6 @@
 from __future__ import annotations
 import pandas as pd
+import json
 
 
 def _market_ok(df: pd.DataFrame, market_symbol: str) -> tuple[bool, dict]:
@@ -96,6 +97,8 @@ def scan_universe(df: pd.DataFrame, cfg: dict) -> tuple[pd.DataFrame, pd.DataFra
             'signal_ok': False,
             'enough_data': False,
             'indicators_ok': False,
+            'missing_indicators': '',
+            'missing_indicators': '',
             'price_ok': False,
             'volume_ok': False,
             'close_above_sma200': False,
@@ -116,6 +119,8 @@ def scan_universe(df: pd.DataFrame, cfg: dict) -> tuple[pd.DataFrame, pd.DataFra
             'atr14': None,
             'avg_vol20': None,
             'dist_sma50_pct': None,
+            'low_distance_to_ema20_pct': None,
+            'low_distance_to_sma50_pct': None,
             'entry_stop': None,
             'stop_loss': None,
             'risk_per_share': None,
@@ -141,15 +146,20 @@ def scan_universe(df: pd.DataFrame, cfg: dict) -> tuple[pd.DataFrame, pd.DataFra
         prev = g.iloc[-2]
         diag['latest_date'] = str(last['Date'])
         indicator_cols = ['EMA20', 'SMA50', 'SMA200', 'ATR14', 'AVG_VOL20']
-        indicators_ok = not pd.isna(last[indicator_cols]).any()
+        missing_indicators = [col for col in indicator_cols if pd.isna(last[col])]
+        indicators_ok = len(missing_indicators) == 0
         diag['indicators_ok'] = bool(indicators_ok)
+        diag['missing_indicators'] = json.dumps(missing_indicators)
 
         for src_col, out_col in [
             ('Close', 'close'), ('EMA20', 'ema20'), ('SMA50', 'sma50'), ('SMA200', 'sma200'),
             ('ATR14', 'atr14'), ('AVG_VOL20', 'avg_vol20'), ('DIST_SMA50_PCT', 'dist_sma50_pct')
         ]:
             if src_col in last and pd.notna(last[src_col]):
-                diag[out_col] = round(float(last[src_col]), 4)
+                if src_col == 'AVG_VOL20':
+                    diag[out_col] = int(last[src_col])
+                else:
+                    diag[out_col] = round(float(last[src_col]), 4)
 
         if not indicators_ok:
             diag['classification'] = 'insufficient_indicators'
@@ -176,13 +186,21 @@ def scan_universe(df: pd.DataFrame, cfg: dict) -> tuple[pd.DataFrame, pd.DataFra
 
         recent = g.iloc[-6:]
         last2 = g.iloc[-2:]
-        diag['recent_correction_ok'] = bool(
-            (last2['Close'].diff().iloc[-1] < 0) or (last2['High'].iloc[-1] < last2['High'].iloc[-2])
-        )
-        diag['recent_low_near_ema20_or_sma50'] = bool(
-            recent['Low'].min() <= max(last['EMA20'], last['SMA50']) * 1.01
-        )
+        
+        down_closes = (recent['Close'].diff() < 0).sum()
+        lower_highs = (recent['High'].diff() < 0).sum()
+        diag['recent_correction_ok'] = bool(down_closes >= 2 or lower_highs >= 2) # al menos 2 velas de correccion en 6 días
+        
+        recent_low = recent['Low'].min()
+        ema20_distance = abs(recent_low / last['EMA20'] - 1)
+        sma50_distance = abs(recent_low / last['SMA50'] - 1)
+
+        diag['low_distance_to_ema20_pct'] = round(float(ema20_distance), 4)
+        diag['low_distance_to_sma50_pct'] = round(float(sma50_distance), 4)
+        diag['recent_low_near_ema20_or_sma50'] = bool(ema20_distance <= 0.02 or sma50_distance <= 0.02) # minimo reciente cerca de EMA20 o SMA50
+        
         diag['recent_close_above_sma50'] = bool((recent['Close'] >= recent['SMA50']).all())
+        
         pullback_ok = (
             diag['recent_correction_ok'] and
             diag['recent_low_near_ema20_or_sma50'] and
@@ -243,7 +261,7 @@ def scan_universe(df: pd.DataFrame, cfg: dict) -> tuple[pd.DataFrame, pd.DataFra
         diag['passed_checks'] = int(passed)
         diag['total_checks'] = int(len(checks))
         diag['score_pct'] = round((passed / len(checks)) * 100, 2)
-        diag['failed_checks'] = ','.join(failed)
+        diag['failed_checks'] = json.dumps(failed)
         signal_ok = bool(market_ok and trend_ok and setup_ok and risk_per_share > 0 and qty > 0)
         diag['signal_ok'] = signal_ok
 
