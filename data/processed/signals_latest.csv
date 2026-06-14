@@ -1,1 +1,1 @@
-
+date,symbol,close,broker,entry_order_type,entry_stop,entry_limit,stop_loss,risk_per_share,target_2r,qty,risk_amount,commission_buy_eur,commission_sell_eur,estimated_roundtrip_fees,max_allowed_open_price,max_open_gap_above_entry_pct,setup,status,notes

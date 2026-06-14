@@ -114,3 +114,21 @@ No hace todavía:
 - gestionar fiscalidad
 - validar datos con proveedor institucional
 - backtesting avanzado
+
+## Diagnóstico de escaneo por ticker
+
+Cada ejecución genera ahora un informe de auditoría de la estrategia:
+
+- `data/processed/scan_diagnostics_latest.csv`: último diagnóstico, una fila por ticker evaluado.
+- `data/processed/scan_diagnostics_latest.parquet`: lo mismo en formato Parquet.
+- `data/processed/scan_diagnostics_history.csv`: histórico acumulado por fecha y ticker.
+
+Este diagnóstico permite ver por qué un ticker no ha generado señal. Campos útiles:
+
+- `classification`: `valid_signal`, `almost_valid`, `trend_only`, `blocked_by_market`, `rejected`, etc.
+- `score_pct`: porcentaje de checks superados.
+- `failed_checks`: condiciones que han fallado.
+- `trend_ok`, `pullback_ok`, `bullish_turn_ok`, `market_ok`: checks principales.
+- `entry_stop`, `stop_loss`, `target_2r`, `qty`: niveles calculados aunque el ticker no llegue a señal válida, cuando sea posible.
+
+Así no dependes de que `signals_latest.csv` tenga filas para saber si el sistema está trabajando. Si no hay señales, el diagnóstico te dice si los tickers están lejos, cerca o bloqueados por mercado.
