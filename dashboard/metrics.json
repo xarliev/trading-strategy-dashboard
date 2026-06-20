@@ -1,8 +1,8 @@
 {
   "evaluated_count": 17,
-  "signals_count": 0,
-  "almost_valid_count": 0,
-  "journal_count": 2,
-  "pending_count": 2,
+  "signals_count": 2,
+  "almost_valid_count": 5,
+  "journal_count": 4,
+  "pending_count": 4,
   "net_pnl": 0.0
 }
