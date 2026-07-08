@@ -1,2 +1,1 @@
 date,symbol,close,broker,entry_order_type,entry_stop,entry_limit,stop_loss,risk_per_share,target_2r,qty,risk_amount,commission_buy_eur,commission_sell_eur,estimated_roundtrip_fees,max_allowed_open_price,max_open_gap_above_entry_pct,setup,status,notes
-2026-07-06,QQQ,722.82,Trade Republic,buy_stop,726.8061,,716.7271,10.079,746.9641,4,40.32,1.0,1.0,2.0,734.0742,0.01,trend_pullback_signal_candle,pending_entry,"Trade Republic: usar orden BUY STOP, no stop-limit. Antes de ejecutar, cancelar/no cursar si la apertura supera max_allowed_open_price o si no activa en 2 sesiones."
