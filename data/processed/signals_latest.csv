@@ -1,1 +1,2 @@
 date,symbol,close,broker,entry_order_type,entry_stop,entry_limit,stop_loss,risk_per_share,target_2r,qty,risk_amount,commission_buy_eur,commission_sell_eur,estimated_roundtrip_fees,max_allowed_open_price,max_open_gap_above_entry_pct,setup,status,notes
+2026-08-10,CABK.MC,12.94,Trade Republic,buy_stop,12.973,,12.733,0.24,13.453,208,49.92,1.0,1.0,2.0,13.1027,0.01,trend_pullback_signal_candle,pending_entry,"Trade Republic: usar orden BUY STOP, no stop-limit. Antes de ejecutar, cancelar/no cursar si la apertura supera max_allowed_open_price o si no activa en 2 sesiones."
