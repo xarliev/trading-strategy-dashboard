@@ -17,13 +17,13 @@
 </head>
 <body>
   <h1>Dashboard de estrategia de trading</h1>
-  <p class="small">Actualizado: 2026-09-18 23:36:12 UTC. Uso educativo/investigación; no es recomendación financiera.</p>
+  <p class="small">Actualizado: 2026-09-22 00:18:23 UTC. Uso educativo/investigación; no es recomendación financiera.</p>
   <div class="grid">
     <div class="card"><b>Tickers evaluados</b><br><span style="font-size:28px">17</span></div>
-    <div class="card"><b>Señales hoy</b><br><span style="font-size:28px">0</span></div>
-    <div class="card"><b>Casi válidas</b><br><span style="font-size:28px">0</span></div>
-    <div class="card"><b>Operaciones en diario</b><br><span style="font-size:28px">72</span></div>
-    <div class="card"><b>Pendientes</b><br><span style="font-size:28px">72</span></div>
+    <div class="card"><b>Señales hoy</b><br><span style="font-size:28px">1</span></div>
+    <div class="card"><b>Casi válidas</b><br><span style="font-size:28px">7</span></div>
+    <div class="card"><b>Operaciones en diario</b><br><span style="font-size:28px">73</span></div>
+    <div class="card"><b>Pendientes</b><br><span style="font-size:28px">73</span></div>
     <div class="card"><b>Net PnL registrado</b><br><span style="font-size:28px">0.0</span></div>
   </div>
 
@@ -58,16 +58,16 @@
   <tbody>
     <tr>
       <td>AAPL</td>
-      <td>blocked_by_market</td>
-      <td>91.67</td>
-      <td>["market_ok"]</td>
-      <td>El filtro del mercado general bloquea nuevas entradas.</td>
-      <td>336.13</td>
+      <td>valid_signal</td>
+      <td>100.00</td>
+      <td>[]</td>
+      <td>Cumple todos los filtros y genera señal operable.</td>
+      <td>336.130</td>
       <td>325.0024</td>
       <td>320.0253</td>
       <td>285.9436</td>
       <td>7.7007</td>
-      <td>43465897.0</td>
+      <td>43475500.0</td>
       <td>0.0503</td>
       <td>338.8285</td>
       <td>331.7599</td>
@@ -77,16 +77,16 @@
     </tr>
     <tr>
       <td>AMZN</td>
-      <td>blocked_by_market</td>
-      <td>83.33</td>
-      <td>["market_ok", "pullback_ok"]</td>
-      <td>El filtro del mercado general bloquea nuevas entradas.</td>
-      <td>253.71</td>
+      <td>almost_valid</td>
+      <td>91.67</td>
+      <td>["pullback_ok"]</td>
+      <td>Tiene tendencia y parte del setup, pero le falta alguna condición final.</td>
+      <td>253.710</td>
       <td>255.0567</td>
       <td>255.8398</td>
       <td>240.3007</td>
       <td>5.5729</td>
-      <td>32851326.0</td>
+      <td>32857915.0</td>
       <td>-0.0083</td>
       <td>255.6854</td>
       <td>251.3227</td>
@@ -96,73 +96,54 @@
     </tr>
     <tr>
       <td>BBVA.MC</td>
-      <td>blocked_by_market</td>
-      <td>83.33</td>
-      <td>["market_ok", "bullish_turn_ok"]</td>
-      <td>El filtro del mercado general bloquea nuevas entradas.</td>
-      <td>24.72</td>
-      <td>24.9371</td>
-      <td>24.1676</td>
-      <td>20.6241</td>
-      <td>0.4379</td>
-      <td>5751204.0</td>
-      <td>0.0229</td>
-      <td>25.1952</td>
-      <td>24.5862</td>
-      <td>26.4131</td>
-      <td>82.0</td>
-      <td>25.4471</td>
+      <td>almost_valid</td>
+      <td>91.67</td>
+      <td>["bullish_turn_ok"]</td>
+      <td>Tiene tendencia y parte del setup, pero le falta alguna condición final.</td>
+      <td>24.660</td>
+      <td>24.9282</td>
+      <td>24.2712</td>
+      <td>20.6902</td>
+      <td>0.4729</td>
+      <td>6854176.0</td>
+      <td>0.0160</td>
+      <td>25.2352</td>
+      <td>24.5527</td>
+      <td>26.6002</td>
+      <td>73.0</td>
+      <td>25.4876</td>
     </tr>
     <tr>
       <td>CABK.MC</td>
-      <td>blocked_by_market</td>
-      <td>83.33</td>
-      <td>["market_ok", "bullish_turn_ok"]</td>
-      <td>El filtro del mercado general bloquea nuevas entradas.</td>
-      <td>13.08</td>
-      <td>13.1715</td>
-      <td>12.9371</td>
-      <td>11.2334</td>
-      <td>0.2550</td>
-      <td>4568853.0</td>
-      <td>0.0110</td>
-      <td>13.3083</td>
-      <td>13.0545</td>
-      <td>13.8159</td>
-      <td>197.0</td>
-      <td>13.4414</td>
-    </tr>
-    <tr>
-      <td>IBE.MC</td>
-      <td>blocked_by_market</td>
-      <td>83.33</td>
-      <td>["market_ok", "pullback_ok"]</td>
-      <td>El filtro del mercado general bloquea nuevas entradas.</td>
-      <td>20.24</td>
-      <td>20.0591</td>
-      <td>20.4707</td>
-      <td>19.4470</td>
-      <td>0.3211</td>
-      <td>6809088.0</td>
-      <td>-0.0113</td>
-      <td>20.3904</td>
-      <td>19.9779</td>
-      <td>21.2153</td>
-      <td>121.0</td>
-      <td>20.5943</td>
+      <td>almost_valid</td>
+      <td>91.67</td>
+      <td>["bullish_turn_ok"]</td>
+      <td>Tiene tendencia y parte del setup, pero le falta alguna condición final.</td>
+      <td>12.995</td>
+      <td>13.1403</td>
+      <td>12.9556</td>
+      <td>11.2672</td>
+      <td>0.2639</td>
+      <td>5401089.0</td>
+      <td>0.0030</td>
+      <td>13.0781</td>
+      <td>12.8436</td>
+      <td>13.5470</td>
+      <td>213.0</td>
+      <td>13.2088</td>
     </tr>
     <tr>
       <td>MSFT</td>
-      <td>blocked_by_market</td>
-      <td>83.33</td>
-      <td>["market_ok", "bullish_turn_ok"]</td>
-      <td>El filtro del mercado general bloquea nuevas entradas.</td>
-      <td>493.78</td>
+      <td>almost_valid</td>
+      <td>91.67</td>
+      <td>["bullish_turn_ok"]</td>
+      <td>Tiene tendencia y parte del setup, pero le falta alguna condición final.</td>
+      <td>493.780</td>
       <td>493.1803</td>
       <td>464.1995</td>
       <td>430.0757</td>
       <td>9.8643</td>
-      <td>21040547.0</td>
+      <td>21049945.0</td>
       <td>0.0637</td>
       <td>499.1486</td>
       <td>490.1136</td>
@@ -172,73 +153,73 @@
     </tr>
     <tr>
       <td>NVDA</td>
-      <td>blocked_by_market</td>
-      <td>83.33</td>
-      <td>["market_ok", "pullback_ok"]</td>
-      <td>El filtro del mercado general bloquea nuevas entradas.</td>
-      <td>222.27</td>
+      <td>almost_valid</td>
+      <td>91.67</td>
+      <td>["pullback_ok"]</td>
+      <td>Tiene tendencia y parte del setup, pero le falta alguna condición final.</td>
+      <td>222.270</td>
       <td>218.3818</td>
       <td>214.0670</td>
       <td>198.0214</td>
-      <td>5.9150</td>
-      <td>134625747.0</td>
+      <td>5.9157</td>
+      <td>134670195.0</td>
       <td>0.0383</td>
       <td>222.9527</td>
-      <td>217.4485</td>
-      <td>233.9612</td>
+      <td>217.4384</td>
+      <td>233.9813</td>
       <td>9.0</td>
       <td>225.1823</td>
     </tr>
     <tr>
       <td>QQQ</td>
-      <td>blocked_by_market</td>
-      <td>83.33</td>
-      <td>["market_ok", "pullback_ok"]</td>
-      <td>El filtro del mercado general bloquea nuevas entradas.</td>
-      <td>721.45</td>
+      <td>almost_valid</td>
+      <td>91.67</td>
+      <td>["pullback_ok"]</td>
+      <td>Tiene tendencia y parte del setup, pero le falta alguna condición final.</td>
+      <td>721.450</td>
       <td>713.4310</td>
       <td>709.9512</td>
       <td>661.7730</td>
-      <td>8.3189</td>
-      <td>31352281.0</td>
+      <td>8.3193</td>
+      <td>31372910.0</td>
       <td>0.0162</td>
-      <td>722.4467</td>
+      <td>722.4517</td>
       <td>714.2481</td>
-      <td>738.8439</td>
+      <td>738.8590</td>
       <td>6.0</td>
-      <td>729.6712</td>
+      <td>729.6762</td>
     </tr>
     <tr>
       <td>SAN.MC</td>
-      <td>blocked_by_market</td>
-      <td>83.33</td>
-      <td>["market_ok", "bullish_turn_ok"]</td>
-      <td>El filtro del mercado general bloquea nuevas entradas.</td>
-      <td>12.69</td>
-      <td>12.7032</td>
-      <td>12.4739</td>
-      <td>10.9074</td>
-      <td>0.2344</td>
-      <td>16398675.0</td>
-      <td>0.0173</td>
-      <td>12.8288</td>
-      <td>12.6046</td>
-      <td>13.2773</td>
-      <td>222.0</td>
-      <td>12.9571</td>
+      <td>almost_valid</td>
+      <td>91.67</td>
+      <td>["bullish_turn_ok"]</td>
+      <td>Tiene tendencia y parte del setup, pero le falta alguna condición final.</td>
+      <td>12.524</td>
+      <td>12.7075</td>
+      <td>12.4998</td>
+      <td>10.9419</td>
+      <td>0.2630</td>
+      <td>19945449.0</td>
+      <td>0.0019</td>
+      <td>12.9930</td>
+      <td>12.4977</td>
+      <td>13.9835</td>
+      <td>100.0</td>
+      <td>13.1229</td>
     </tr>
     <tr>
       <td>GOOGL</td>
-      <td>blocked_by_market</td>
-      <td>75.00</td>
-      <td>["market_ok", "pullback_ok", "bullish_turn_ok"]</td>
-      <td>El filtro del mercado general bloquea nuevas entradas.</td>
-      <td>349.54</td>
+      <td>trend_only</td>
+      <td>83.33</td>
+      <td>["pullback_ok", "bullish_turn_ok"]</td>
+      <td>Cumple tendencia, pero todavía no hay retroceso/vela señal válida.</td>
+      <td>349.540</td>
       <td>343.0228</td>
       <td>345.3991</td>
       <td>337.0870</td>
       <td>8.1629</td>
-      <td>25406272.0</td>
+      <td>25409605.0</td>
       <td>0.0120</td>
       <td>359.7994</td>
       <td>347.6337</td>
@@ -247,36 +228,36 @@
       <td>363.3974</td>
     </tr>
     <tr>
-      <td>ITX.MC</td>
-      <td>blocked_by_market</td>
-      <td>75.00</td>
-      <td>["market_ok", "close_above_sma200", "pullback_ok"]</td>
-      <td>El filtro del mercado general bloquea nuevas entradas.</td>
-      <td>52.78</td>
-      <td>55.6648</td>
-      <td>56.3600</td>
-      <td>54.1872</td>
-      <td>1.0771</td>
-      <td>1532916.0</td>
-      <td>-0.0635</td>
-      <td>53.0530</td>
-      <td>52.2923</td>
-      <td>54.5744</td>
-      <td>65.0</td>
-      <td>53.5835</td>
+      <td>IBE.MC</td>
+      <td>trend_only</td>
+      <td>83.33</td>
+      <td>["pullback_ok", "bullish_turn_ok"]</td>
+      <td>Cumple tendencia, pero todavía no hay retroceso/vela señal válida.</td>
+      <td>20.290</td>
+      <td>20.1208</td>
+      <td>20.4477</td>
+      <td>19.4773</td>
+      <td>0.3325</td>
+      <td>8342593.0</td>
+      <td>-0.0077</td>
+      <td>20.5205</td>
+      <td>20.0868</td>
+      <td>21.3880</td>
+      <td>115.0</td>
+      <td>20.7257</td>
     </tr>
     <tr>
       <td>IWM</td>
-      <td>blocked_by_market</td>
-      <td>75.00</td>
-      <td>["market_ok", "pullback_ok", "bullish_turn_ok"]</td>
-      <td>El filtro del mercado general bloquea nuevas entradas.</td>
-      <td>284.10</td>
+      <td>trend_only</td>
+      <td>83.33</td>
+      <td>["pullback_ok", "bullish_turn_ok"]</td>
+      <td>Cumple tendencia, pero todavía no hay retroceso/vela señal válida.</td>
+      <td>284.100</td>
       <td>290.4715</td>
       <td>294.4333</td>
       <td>273.5107</td>
       <td>3.4711</td>
-      <td>20617697.0</td>
+      <td>20624250.0</td>
       <td>-0.0351</td>
       <td>285.5553</td>
       <td>282.1929</td>
@@ -286,73 +267,92 @@
     </tr>
     <tr>
       <td>REP.MC</td>
-      <td>blocked_by_market</td>
-      <td>75.00</td>
-      <td>["market_ok", "distance_sma50_ok", "bullish_turn_ok"]</td>
-      <td>El filtro del mercado general bloquea nuevas entradas.</td>
-      <td>29.19</td>
-      <td>28.0491</td>
-      <td>26.5138</td>
-      <td>21.1785</td>
-      <td>0.7714</td>
-      <td>2613518.0</td>
-      <td>0.1009</td>
-      <td>29.7497</td>
-      <td>28.8629</td>
-      <td>31.5234</td>
-      <td>56.0</td>
-      <td>30.0472</td>
+      <td>rejected</td>
+      <td>83.33</td>
+      <td>["distance_sma50_ok", "bullish_turn_ok"]</td>
+      <td>No cumple los filtros mínimos de tendencia/liquidez/precio.</td>
+      <td>29.610</td>
+      <td>28.3452</td>
+      <td>26.7742</td>
+      <td>21.3209</td>
+      <td>0.7750</td>
+      <td>2809609.0</td>
+      <td>0.1059</td>
+      <td>29.7197</td>
+      <td>29.1025</td>
+      <td>30.9541</td>
+      <td>81.0</td>
+      <td>30.0169</td>
     </tr>
     <tr>
       <td>FER.MC</td>
-      <td>blocked_by_market</td>
-      <td>66.67</td>
-      <td>["market_ok", "close_above_sma200", "sma50_above_sma200", "pullback_ok"]</td>
-      <td>El filtro del mercado general bloquea nuevas entradas.</td>
-      <td>47.91</td>
-      <td>50.1557</td>
-      <td>53.7978</td>
-      <td>56.8383</td>
-      <td>0.9036</td>
-      <td>997302.0</td>
-      <td>-0.1094</td>
-      <td>48.1982</td>
-      <td>46.9096</td>
-      <td>50.7752</td>
-      <td>38.0</td>
-      <td>48.6801</td>
+      <td>rejected</td>
+      <td>75.00</td>
+      <td>["close_above_sma200", "sma50_above_sma200", "pullback_ok"]</td>
+      <td>No cumple los filtros mínimos de tendencia/liquidez/precio.</td>
+      <td>47.730</td>
+      <td>49.7079</td>
+      <td>53.4364</td>
+      <td>56.7522</td>
+      <td>0.9136</td>
+      <td>1150040.0</td>
+      <td>-0.1068</td>
+      <td>47.9079</td>
+      <td>47.3286</td>
+      <td>49.0663</td>
+      <td>86.0</td>
+      <td>48.3869</td>
+    </tr>
+    <tr>
+      <td>ITX.MC</td>
+      <td>rejected</td>
+      <td>75.00</td>
+      <td>["close_above_sma200", "pullback_ok", "bullish_turn_ok"]</td>
+      <td>No cumple los filtros mínimos de tendencia/liquidez/precio.</td>
+      <td>51.740</td>
+      <td>55.0097</td>
+      <td>56.2356</td>
+      <td>54.1758</td>
+      <td>1.0786</td>
+      <td>1813497.0</td>
+      <td>-0.0799</td>
+      <td>52.4524</td>
+      <td>51.4321</td>
+      <td>54.4929</td>
+      <td>49.0</td>
+      <td>52.9769</td>
     </tr>
     <tr>
       <td>TSLA</td>
-      <td>blocked_by_market</td>
-      <td>66.67</td>
-      <td>["market_ok", "close_above_sma200", "sma50_above_sma200", "bullish_turn_ok"]</td>
-      <td>El filtro del mercado general bloquea nuevas entradas.</td>
-      <td>364.27</td>
+      <td>rejected</td>
+      <td>75.00</td>
+      <td>["close_above_sma200", "sma50_above_sma200", "bullish_turn_ok"]</td>
+      <td>No cumple los filtros mínimos de tendencia/liquidez/precio.</td>
+      <td>364.270</td>
       <td>358.3828</td>
       <td>350.2456</td>
       <td>397.3256</td>
-      <td>14.2085</td>
-      <td>40477056.0</td>
+      <td>14.2086</td>
+      <td>40479440.0</td>
       <td>0.0400</td>
       <td>371.2709</td>
-      <td>359.3302</td>
-      <td>395.1524</td>
+      <td>359.3291</td>
+      <td>395.1544</td>
       <td>4.0</td>
       <td>374.9836</td>
     </tr>
     <tr>
       <td>META</td>
-      <td>blocked_by_market</td>
-      <td>58.33</td>
-      <td>["market_ok", "sma50_above_sma200", "distance_sma50_ok", "pullback_ok", "bullish_turn_ok"]</td>
-      <td>El filtro del mercado general bloquea nuevas entradas.</td>
-      <td>665.75</td>
+      <td>rejected</td>
+      <td>66.67</td>
+      <td>["sma50_above_sma200", "distance_sma50_ok", "pullback_ok", "bullish_turn_ok"]</td>
+      <td>No cumple los filtros mínimos de tendencia/liquidez/precio.</td>
+      <td>665.750</td>
       <td>629.7440</td>
       <td>607.3790</td>
       <td>623.5470</td>
       <td>21.7886</td>
-      <td>18668373.0</td>
+      <td>18676035.0</td>
       <td>0.0961</td>
       <td>690.8402</td>
       <td>658.6211</td>
@@ -362,7 +362,7 @@
     </tr>
     <tr>
       <td>SPY</td>
-      <td>market_filter_failed</td>
+      <td>market_ok</td>
       <td>0.00</td>
       <td></td>
       <td>Filtro de mercado general usado para permitir/bloquear nuevas entradas.</td>
@@ -384,7 +384,56 @@
 
   <h2>Señales detectadas</h2>
   <p><a href="../data/processed/signals_latest.csv">Descargar señales últimas</a></p>
-  <p>No hay datos todavía.</p>
+  <table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>date</th>
+      <th>symbol</th>
+      <th>close</th>
+      <th>broker</th>
+      <th>entry_order_type</th>
+      <th>entry_stop</th>
+      <th>entry_limit</th>
+      <th>stop_loss</th>
+      <th>risk_per_share</th>
+      <th>target_2r</th>
+      <th>qty</th>
+      <th>risk_amount</th>
+      <th>commission_buy_eur</th>
+      <th>commission_sell_eur</th>
+      <th>estimated_roundtrip_fees</th>
+      <th>max_allowed_open_price</th>
+      <th>max_open_gap_above_entry_pct</th>
+      <th>setup</th>
+      <th>status</th>
+      <th>notes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>2026-09-18</td>
+      <td>AAPL</td>
+      <td>336.13</td>
+      <td>Trade Republic</td>
+      <td>buy_stop</td>
+      <td>338.8285</td>
+      <td></td>
+      <td>331.7599</td>
+      <td>7.0686</td>
+      <td>352.9656</td>
+      <td>7</td>
+      <td>49.48</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>2.0</td>
+      <td>342.2168</td>
+      <td>0.01</td>
+      <td>trend_pullback_signal_candle</td>
+      <td>pending_entry</td>
+      <td>Trade Republic: usar orden BUY STOP, no stop-limit. Antes de ejecutar, cancelar/no cursar si la apertura supera max_allowed_open_price o si no activa en 2 sesiones.</td>
+    </tr>
+  </tbody>
+</table>
 
   <h2>Diario de operaciones</h2>
   <p><a href="../data/processed/trading_journal.csv">Descargar trading_journal.csv</a></p>
@@ -2288,6 +2337,32 @@
       <td>2.0</td>
       <td>NaN</td>
       <td>NaN</td>
+      <td>Trade Republic: usar orden BUY STOP, no stop-limit. Antes de ejecutar, cancelar/no cursar si la apertura supera max_allowed_open_price o si no activa en 2 sesiones.</td>
+    </tr>
+    <tr>
+      <td>2026-09-18_AAPL</td>
+      <td>2026-09-18</td>
+      <td>AAPL</td>
+      <td>Trade Republic</td>
+      <td>trend_pullback_signal_candle</td>
+      <td>pending_entry</td>
+      <td>buy_stop</td>
+      <td>338.8285</td>
+      <td></td>
+      <td>342.2168</td>
+      <td></td>
+      <td>331.7599</td>
+      <td>7</td>
+      <td>49.48</td>
+      <td>352.9656</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>2.0</td>
+      <td></td>
+      <td></td>
       <td>Trade Republic: usar orden BUY STOP, no stop-limit. Antes de ejecutar, cancelar/no cursar si la apertura supera max_allowed_open_price o si no activa en 2 sesiones.</td>
     </tr>
   </tbody>
